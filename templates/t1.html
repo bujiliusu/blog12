@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{{ data }}
+<table>
+    {% for x in data %}
+    {% if forloop.counter0|divisibleby:"9" %}<tr>{% endif %}
+        <td>{{ x }}</td>
+    {% if forloop.counter|divisibleby:"9" %}<tr>{% endif %}
+    {% endfor %}
+</table>
+
+</body>
+</html>

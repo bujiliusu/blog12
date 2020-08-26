@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+    {% for i in data %}
+        <tr style="color:{% cycle 'red' 'blue' %}">
+    {% for j in data %}
+            <td>{{ j }}*{{ i }}={% widthratio j 1 i %}></td>
+    {% endfor %}
+        </tr>
+    {% endfor %}
+    </table>
+</body>
+</html>

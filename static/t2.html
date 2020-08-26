@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <title>test page</title>
+        <meta charset="urf-8">
+        <style type="text/css">
+       
+        table,td {
+            border: #000000 solid 1px;
+
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td {
+            padding: 5px;
+        }
+        </style>
+        <script src="jquery.js"></script>
+        <script type="text/javascript">
+        $(function(){
+            $('#main').css('color', 'red');
+            $('button').click(function(){
+                console.log(this);
+                //$(this).hide();
+                console.log($('#main').attr('id'));
+            });
+            var trs=$('.detail tr');
+            trs.each(function(index, domEle){
+                $(domEle).css("backgroundColor", index % 2 ? 'red': 'yellow');
+            });
+            $('#ajaxget').click(function(){
+                $.get('http://127.0.0.1:8000/user/show', {'name': 'tom'}, function(data){
+                    console.log(data);
+                });
+            });
+            $('#ajaxpost').click(function(){
+                $.post('http://127.0.0.1:8000/user/show', {'name': 'tom'}, function(data){
+                    console.log(data);
+                });
+            });
+            $('#ajaxjson').click(function(){
+                $.ajax({
+                    type: "POST",
+                    contentType: "application/json",
+                    url: "http://127.0.0.1:8000/user/show?id=3",
+                    data: {'name': 'tom'},
+                    success:  function(data){
+                    console.log(data);
+                    }
+                });
+            });
+        });
+        </script>
+        
+    </head>
+    <body>
+        <div id="main">
+            test test
+        </div>
+        <hr>
+        <button>test click</button><br>
+        <table class="detail">
+            <tr>
+                <td>1</td>
+                <td>test1</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>test2</td>
+            </tr>
+        </table>
+        <hr>
+        <button id='ajaxget'>ajav get</button>
+        <button id='ajaxpost'>ajav get</button>
+        <button id='ajaxjson'>ajav get</button>
+    </body>
+</html>
